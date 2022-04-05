@@ -9,3 +9,6 @@ You'll begin with basics like creating functions, choosing data types, and bindi
 * Generics, smart pointers, multithreading, trait objects and advanced pattern matching
 * Using `Cargo`, Rust's built-in package manager, to build, test and document your code and manage dependencies
 * How best to use Rust's advanced compiler with compiler-led programming techniques.
+
+#### To install Rust
+`curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh`
