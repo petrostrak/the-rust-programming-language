@@ -18,3 +18,6 @@ You'll begin with basics like creating functions, choosing data types, and bindi
 
 #### To uninstall Rust
 `rustup selft uninstall`
+
+#### Local Documentation
+The installer also includes a copy of the documentation locally, so you can read it offline. Run `rustup doc` to open the documentation in your browser.
