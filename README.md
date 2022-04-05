@@ -1,2 +1,11 @@
-# the-rust-programming-language
-The Rust Programming Language
+# The Rust Programming Language
+[The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html) is the official book on Rust: an open source systems programming language that helps you write faster, more reliable software. Rust offers control over low-level details (such as memory usage) in combination with high-level ergonomics, eliminating the hassle traditionally associated with low-level languages.
+
+You'll begin with basics like creating functions, choosing data types, and binding variables and then move on to more advanced concepts, such as:
+
+* Ownership and borrowing, lifetimes and traits
+* Using Rust's memory safety guarantees to build fast, safe programs
+* Testing, error handling and effective refactoring
+* Generics, smart pointers, multithreading, trait objects and advanced pattern matching
+* Using `Cargo`, Rust's built-in package manager, to build, test and document your code and manage dependencies
+* How best to use Rust's advanced compiler with compiler-led programming techniques.
