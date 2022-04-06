@@ -1,1 +1,0 @@
-/home/petros/Documents/github.com/petrostrak/the-rust-programming-language/projects/hello_cargo/target/debug/hello_cargo: /home/petros/Documents/github.com/petrostrak/the-rust-programming-language/projects/hello_cargo/src/main.rs
