@@ -21,3 +21,7 @@ You'll begin with basics like creating functions, choosing data types, and bindi
 
 #### Local Documentation
 The installer also includes a copy of the documentation locally, so you can read it offline. Run `rustup doc` to open the documentation in your browser.
+
+###### NOTE:
+Instructions for using a crate are in each crate's documentation. Another neat feature of Cargo
+is that you can run the `cargo doc --open` command, which will build documentation provided by all of the dependencies locally and open it in your browser.
