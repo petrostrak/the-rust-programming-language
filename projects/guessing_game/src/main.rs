@@ -20,8 +20,10 @@ fn main() {
         // We shadow the previous value of guess with a new one.
         // This feature is often used in situations in which you
         // want to convert a value from one type to another type.
-        let guess: u32 = guess.trim().parse()
-            .expect("Please type a number!");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
         println!("You guessed: {}", guess);
 
