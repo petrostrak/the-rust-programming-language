@@ -32,4 +32,23 @@ fn main() {
     let five_hundrer = q.0;
     let floating_number = q.1;
     let ace = q.2;
+
+    // The Array Type
+    let arr = [1, 2, 3, 4, 5];
+
+    let same_values = [3; 5]; // [3, 3, 3, 3, 3]
+
+    let second_arr = [1, 2, 3, 4, 5];
+    let first_element = second_arr[0]; // 1
+
+    // Invalid Array Element Access
+    let mut index = String::new();
+
+    std::io::stdin().read_line(&mut index).expect("Failed to read line");
+    let index: usize = index.trim().parse()
+        .expect("Not a number");
+    
+    let element = arr[index];
+
+    println!("The value of the element at index {} is {}.", index, element);
 }
