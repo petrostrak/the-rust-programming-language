@@ -33,4 +33,8 @@ fn main() {
         println!("{}", element+1);
     }
 
+    for x in 1..4 {
+        println!("{}", x);
+    }
+
 }
