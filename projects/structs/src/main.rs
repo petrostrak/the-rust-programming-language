@@ -20,6 +20,10 @@ impl Rectangle {
     fn circumference(&self) -> u32 {
         2 * (self.height) + 2 * (self.width)
     }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.height > other.height && self.width > other.width
+    }
 }
 
 fn main() {
@@ -54,6 +58,16 @@ fn main() {
     };
     println!("The rectangle object: {:#?}", rect);
 
+    let r1 = Rectangle {
+        height: 20,
+        width:40,
+    };
+
+    let r2 = Rectangle {
+        height: 31,
+        width: 50,
+    };
+
     println!(
         "The area of the rectangle is {} square pixels.",
         rect.area(),
@@ -62,6 +76,9 @@ fn main() {
     println!("The circumference of the rectangle is {} pixle meters.",
         rect.circumference(),
     );
+
+    println!("Can rect hold r1?: {}", rect.can_hold(&r1));
+    println!("Can rect hold r2?: {}", rect.can_hold(&r2));
 
 
 }
