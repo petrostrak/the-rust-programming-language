@@ -12,6 +12,16 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.height * self.width
+    }
+
+    fn circumference(&self) -> u32 {
+        2 * (self.height) + 2 * (self.width)
+    }
+}
+
 fn main() {
 
     let user1 = User{
@@ -20,7 +30,7 @@ fn main() {
         active: false,
         sign_in_count: 0,
     };
-    println!("User 1: {:?}", user1);
+    println!("User 1: {:#?}", user1);
 
     let mut user2 = User {
         username: String::from("alx"),
@@ -28,7 +38,7 @@ fn main() {
         ..user1
     };
     user2.email = String::from("new_email@example.com");
-    println!("User 2: {:?}", &user2);
+    println!("User 2: {:#?}", &user2);
 
     let user3 = build_user(
         String::from("Maggie"), 
@@ -36,18 +46,22 @@ fn main() {
         20, 
         user1.active,
     );
-    println!("User 3: {:?}", &user3);
+    println!("User 3: {:#?}", &user3);
 
     let rect= Rectangle{
         height: 30,
         width: 50,
     };
-    println!("The rectangle object: {:?}", rect);
+    println!("The rectangle object: {:#?}", rect);
 
     println!(
         "The area of the rectangle is {} square pixels.",
-        area(&rect),
-    )
+        rect.area(),
+    );
+
+    println!("The circumference of the rectangle is {} pixle meters.",
+        rect.circumference(),
+    );
 
 
 }
@@ -59,8 +73,4 @@ fn build_user(username: String, email: String, counter: u64, active: bool) -> Us
         active,
         sign_in_count: counter,
     }
-}
-
-fn area(rectangle: &Rectangle) -> u32 {
-    rectangle.height * rectangle.width
 }
