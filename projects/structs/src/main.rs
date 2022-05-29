@@ -1,34 +1,40 @@
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
 fn main() {
 
-    let Petros = User{
+    let user1 = User{
         email: String::from("someone@example.com"),
         username: String::from("PetrosTrak"),
         active: false,
         sign_in_count: 0,
     };
 
-    fn build_user(username: String, email: String, counter: u64, active: bool) -> User {
-        User {
-            username,
-            email,
-            active,
-            sign_in_count: counter,
-        }
-    }
-
-    let Alex = User {
+    let mut user2 = User {
         username: String::from("alx"),
         email: String::from("alx@example.com"),
-        ..Petros
+        ..user1
     };
+    user2.email = String::from("new_email@example.com");
 
-    let Maggie = build_user("Maggie".to_string(), "mag@example.com".to_string(), 20, false);
+    let user3 = build_user(
+        String::from("Maggie"), 
+        String::from("mag@example.com"), 
+        20, 
+        user1.active,
+    );
 
 }
 
-struct User {
-    username: String,
-    email: String,
-    sign_in_count: u64,
-    active: bool,
+fn build_user(username: String, email: String, counter: u64, active: bool) -> User {
+    User {
+        username,
+        email,
+        active,
+        sign_in_count: counter,
+    }
 }
