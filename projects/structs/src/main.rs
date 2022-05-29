@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct User {
     username: String,
     email: String,
@@ -5,6 +6,7 @@ struct User {
     active: bool,
 }
 
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -18,6 +20,7 @@ fn main() {
         active: false,
         sign_in_count: 0,
     };
+    println!("User 1: {:?}", user1);
 
     let mut user2 = User {
         username: String::from("alx"),
@@ -25,6 +28,7 @@ fn main() {
         ..user1
     };
     user2.email = String::from("new_email@example.com");
+    println!("User 2: {:?}", &user2);
 
     let user3 = build_user(
         String::from("Maggie"), 
@@ -32,11 +36,13 @@ fn main() {
         20, 
         user1.active,
     );
+    println!("User 3: {:?}", &user3);
 
     let rect= Rectangle{
         height: 30,
         width: 50,
     };
+    println!("The rectangle object: {:?}", rect);
 
     println!(
         "The area of the rectangle is {} square pixels.",
