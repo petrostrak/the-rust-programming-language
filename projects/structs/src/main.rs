@@ -5,6 +5,11 @@ struct User {
     active: bool,
 }
 
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
 fn main() {
 
     let user1 = User{
@@ -28,6 +33,17 @@ fn main() {
         user1.active,
     );
 
+    let rect= Rectangle{
+        height: 30,
+        width: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rect),
+    )
+
+
 }
 
 fn build_user(username: String, email: String, counter: u64, active: bool) -> User {
@@ -37,4 +53,8 @@ fn build_user(username: String, email: String, counter: u64, active: bool) -> Us
         active,
         sign_in_count: counter,
     }
+}
+
+fn area(rectangle: &Rectangle) -> u32 {
+    rectangle.height * rectangle.width
 }
