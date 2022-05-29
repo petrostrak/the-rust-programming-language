@@ -26,6 +26,13 @@ impl Rectangle {
     }
 }
 
+
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle { width: size, height: size }
+    }
+}
+
 fn main() {
 
     let user1 = User{
@@ -79,6 +86,9 @@ fn main() {
 
     println!("Can rect hold r1?: {}", rect.can_hold(&r1));
     println!("Can rect hold r2?: {}", rect.can_hold(&r2));
+
+    let rect_associated = Rectangle::square(5);
+    println!("{:#?}", rect_associated);
 
 
 }
