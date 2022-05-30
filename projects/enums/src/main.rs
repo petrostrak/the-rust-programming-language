@@ -21,6 +21,25 @@ struct IpAddr {
     address: String,
 }
 
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> i8 {
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+        },
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 20,
+    }
+}
+
 fn main() {
     let four = IpAddrKind::V4;
     let six = IpAddrKind::V6;
@@ -43,6 +62,9 @@ fn main() {
     let sum = x + y.unwrap_or(0);
 
     println!("{}", sum);
+
+    let penny = Coin::Penny;
+    value_in_cents(penny);
 }
 
 fn route(ip_kind: IpAddrKind) {} 
