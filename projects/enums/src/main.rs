@@ -25,7 +25,7 @@ enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsState),
 }
 
 fn value_in_cents(coin: Coin) -> i8 {
@@ -36,8 +36,21 @@ fn value_in_cents(coin: Coin) -> i8 {
         },
         Coin::Nickel => 5,
         Coin::Dime => 10,
-        Coin::Quarter => 20,
+        Coin::Quarter(state) => {
+            print!("State quarter from {:#?}!", state);
+            20
+        },
     }
+}
+
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+    Arizona,
+    Arkansas,
+    California,
+    //...
 }
 
 fn main() {
@@ -65,6 +78,7 @@ fn main() {
 
     let penny = Coin::Penny;
     value_in_cents(penny);
+    value_in_cents(Coin::Quarter((UsState::Alaska)));
 }
 
 fn route(ip_kind: IpAddrKind) {} 
