@@ -86,6 +86,10 @@ fn main() {
 
     print!("{:#?}", plus_one(five));
 
+    if let Some(5) = five {
+        println!("five!")
+    }
+
 }
 
 fn plus_one(x: Option<i32>) -> Option<i32> {
