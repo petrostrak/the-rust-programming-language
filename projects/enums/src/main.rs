@@ -30,7 +30,19 @@ fn main() {
         address: String::from("127.0.0.1")
     };
 
-    Message::some_func()
+    Message::some_func();
+
+    let some_number = Some(5);
+    let some_string = Some("a string");
+
+    let absent_number: Option<i32> = None;
+
+    let x = 5;
+    let y = None;
+
+    let sum = x + y.unwrap_or(0);
+
+    println!("{}", sum);
 }
 
 fn route(ip_kind: IpAddrKind) {} 
