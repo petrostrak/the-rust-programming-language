@@ -34,10 +34,18 @@ mod back_of_house {
             Breakfast { toast: String::from(toast), seasonal_fruit: String::from("peaches") }
         }
     }
+
+    pub enum Appetizer {
+        Soup,
+        Salad,
+    }
 }
 
 pub fn eat_at_restaurant() {
     let mut meal = back_of_house::Breakfast::summer("Rey");
 
     meal.toast = String::from("Wheat");
+
+    let order1 = back_of_house::Appetizer::Soup;
+    let order2 = back_of_house::Appetizer::Salad;
 }
