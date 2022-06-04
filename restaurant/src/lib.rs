@@ -1,3 +1,6 @@
+use rand::{Rng, CryptoRng, ErrorKind::Transient};
+use std::io::*;
+
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -41,6 +44,8 @@ mod back_of_house {
     }
 }
 
+pub use self::front_of_house::hosting;
+
 pub fn eat_at_restaurant() {
     let mut meal = back_of_house::Breakfast::summer("Rey");
 
@@ -48,4 +53,8 @@ pub fn eat_at_restaurant() {
 
     let order1 = back_of_house::Appetizer::Soup;
     let order2 = back_of_house::Appetizer::Salad;
+
+    hosting::add_to_waitlist();
+
+    let secret_number = rand::thread_rng().gen_range(1, 101);
 }
