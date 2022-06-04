@@ -25,7 +25,7 @@ mod back_of_house {
     fn cook_order() {}
 
     pub struct Breakfast {
-        toast: String,
+        pub toast: String,
         seasonal_fruit: String,
     }
 
@@ -38,4 +38,6 @@ mod back_of_house {
 
 pub fn eat_at_restaurant() {
     let mut meal = back_of_house::Breakfast::summer("Rey");
+
+    meal.toast = String::from("Wheat");
 }
