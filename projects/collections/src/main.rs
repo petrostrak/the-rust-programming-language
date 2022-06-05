@@ -15,4 +15,18 @@ fn main() {
        Some(third) => println!("The third element is {}", third),
        None => println!("There is no third element"),
    }
+
+   let mut v3 = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+   for i in &v3 {
+       println!("{}", i)
+   }
+
+   for y in &mut v3 {
+    *y += 50
+   }
+
+   for i in &v3 {
+    println!("{}", i)
+}
 }
