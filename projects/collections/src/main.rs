@@ -1,3 +1,5 @@
+use unicode_segmentation::{self, UnicodeSegmentation};
+
 fn main() {
     let a = [1, 2, 3];
     let mut v:Vec<i32> = Vec::new();
@@ -62,5 +64,20 @@ fn main() {
     let s2 = String::from("world!");
     // let s3 = s1 + &s2; 
     let s3 = format!("{}{}", s1, s2);
+
+    let hello = String::from("今日は");
+
+    for b in hello.bytes() {
+        print!("{}\n", b);
+    }
+
+    for c in hello.chars() {
+        println!("{}", c);
+    }
+
+    for g in hello.graphemes(true) {
+        println!("{}", g);
+    }
+
 }
 
