@@ -96,5 +96,18 @@ fn main() {
     scores.insert(String::from("Blue"), -10); // will overwrite  key Blue
     scores.entry(String::from("Yellow")).or_insert(30); // if key already exists, do nothing
 
+    // Populate a Hashmap with the word count from the text string below.
+    let text = String::from("hello world wonderful world");
+
+    let mut map = HashMap::new();
+
+    // ["hello", "world", "wonderful", "world"]
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0); // or_insert returns a mutable reference to our value
+        *count += 1;
+    }
+
+    println!("{:?}", map);
+
 }
 
