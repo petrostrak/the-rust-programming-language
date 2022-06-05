@@ -46,5 +46,21 @@ fn main() {
         SpreadsheetCell::Int(i) => println!("{}", i),
         _ => println!("Not an integer")
     }
+
+    // Strings are stored as a collection of UTF-8 encoded bytes
+    let s1 = String::new();
+    let s2 = "initial contents";
+    let s3  = s2.to_string();
+    let s4 = String::from("initial contents");
+
+    let mut s = String::from("foo");
+    s.push_str("bar");
+    s.push('!');
+    // foobar!
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    // let s3 = s1 + &s2; 
+    let s3 = format!("{}{}", s1, s2);
 }
 
