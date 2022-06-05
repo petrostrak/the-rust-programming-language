@@ -93,5 +93,8 @@ fn main() {
     let score = scores.get(&team_name);
     println!("{:?}",score);
 
+    scores.insert(String::from("Blue"), -10); // will overwrite  key Blue
+    scores.entry(String::from("Yellow")).or_insert(30); // if key already exists, do nothing
+
 }
 
