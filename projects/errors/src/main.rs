@@ -1,5 +1,14 @@
+use std::fs::File;
+
 fn main() {
-    a();
+    // a();
+
+    let f = File::open("hello.txt");
+
+    let f = match  f {
+        Ok(file) => file,
+        Err(error) => panic!("problem opening the file: {:?}", error),
+    };
 }
 
 fn a() {
