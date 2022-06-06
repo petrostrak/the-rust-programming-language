@@ -13,12 +13,26 @@ fn main() {
 
     let p1 = Point{x:5, y:10};
     let p2 = Point{x: 1.5, y: 3.3};
-    let p3 = Point{x: 1.5, y: 3};
+    p1.x();
+    p2.y();
+    // let p3 = Point{x: 1.5, y: 3};
 }
 
-struct Point<T, U> {
-    x: T,
+struct Point<U> {
+    x: U,
     y: U,
+}
+
+impl<U> Point<U> {
+    fn x(&self) -> &U {
+        &self.x
+    }
+}
+
+impl Point<f64> {
+    fn y(&self) -> f64 {
+        self.y
+    }
 }
 
 fn get_largest<T: PartialOrd + Copy>(number_list: Vec<T>) -> T {
