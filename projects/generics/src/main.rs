@@ -12,10 +12,21 @@ fn main() {
     println!("The largest number is {}", largest);
 
     let p1 = Point{x:5, y:10};
-    let p2 = Point{x: 1.5, y: 3.3};
+    let p2 = Point1{x: 1.5, y: 3.3};
+    let p = Point1{x: "Hello", y: 'c'};
     p1.x();
-    p2.y();
-    // let p3 = Point{x: 1.5, y: 3};
+    let p3 = p2.mixup(p);
+}
+
+struct Point1<T, U> {
+    x: T,
+    y: U,
+}
+
+impl<T, U> Point1<T, U> {
+    fn mixup<V, W>(self, other: Point1<V, W>) -> Point1<T, W> {
+        Point1 { x: self.x, y: other.y }
+    }
 }
 
 struct Point<U> {
