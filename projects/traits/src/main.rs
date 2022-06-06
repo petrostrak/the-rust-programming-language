@@ -47,6 +47,15 @@ pub fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }
 
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("@petrostrak"),
+        content: String::from("Hello rust!"),
+        reply: false,
+        retweet: false,
+    }
+}
+
 fn main() {
     let tweet = Tweet {
         username: String::from("@petrostrak"),
@@ -65,4 +74,6 @@ fn main() {
     println!("Article summary: {}", article.summarize());
 
     notify(&article);
+
+    println!("{}", returns_summarizable().summarize());
 }
