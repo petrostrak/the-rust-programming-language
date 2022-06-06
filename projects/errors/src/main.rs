@@ -6,14 +6,8 @@ fn main() {
     // a();
 
     fn read_username_from_file() -> Result<String, io::Error> {
-        let mut f = File::open("hello.txt")?;
         let mut s = String::new();
-
-        // let mut f = match f {
-        //     Ok(file) => file,
-        //     Err(e) => return  Err(e)
-        // };
-        f.read_to_string(&mut s)?;
+        let mut f = File::open("hello.txt")?.read_to_string(&mut s)?;
         Ok(s)
     }
     
