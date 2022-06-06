@@ -10,7 +10,7 @@ fn main() {
 // &'a i32      a reference with an explicit lifetime
 // &'a mut i32  a mutable reference with an explicit lifetime 
 //
-// Generical lifetime annotations creates a relation between
+// Generical lifetime annotations create a relation between
 // the arguments lifetime and the returned reference.
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str { // the lifetime of the returned reference will 
     if x.len() > y.len() {                          // be the same as the smallest lifetime of the 
@@ -18,4 +18,8 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str { // the lifetime of the retur
     } else {
         y
     }
+}
+
+struct ImportantExcerpt<'a> { // the struct cannot outlive the reference passed into part.
+    part: &'a str,
 }
