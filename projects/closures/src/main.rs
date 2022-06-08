@@ -65,5 +65,23 @@ fn main() {
     let simulated_random_number = 7;
 
     generate_workout(simulated_intensity, simulated_random_number);
+
+    let x = 4;
+
+    let equal_to_x = |z| z == x;
+
+    let y = 4;
+
+    assert!(equal_to_x(y));
+
+    let q = vec![1, 2, 3];
+
+    let equal_to_x = move |z| z == q;
+
+    // println!("can't use x here: {:?}", q); // error borrow of moved value q
+
+    let w = vec![1, 2, 3];
+
+    assert!(equal_to_x(w))
 }
 
