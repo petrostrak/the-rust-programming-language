@@ -48,4 +48,8 @@ fn main() {
     for value in v1_iter {
         println!("Got: {}", value);
     }
+
+    let v2: Vec<i32> = v1.iter().map(|x| x + 1).collect();
+
+    assert_eq!(v2, vec![2, 3, 4]);
 }
