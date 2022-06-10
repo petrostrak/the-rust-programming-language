@@ -43,7 +43,13 @@ fn main() {
     let d = CustomSmartPointer {
         data: String::from("other stuff"),
     };
-    println!("CustomSmartPointers created.")
+    println!("CustomSmartPointers created.");
+
+    let e = CustomSmartPointer {
+        data: String::from("some data"),
+    };
+    drop(e);
+    println!("CustomSmartPointer dropped before the end of main.");
 }
 
 fn hello(name: &str) {
