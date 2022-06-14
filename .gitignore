@@ -26,6 +26,7 @@ restaurant/target
 /the-book/box_pointer/target
 /the-book/deref_and_drop/target
 /the-book/reference-counting/target
+/the-book/interior_mutability/target
 
 # Remove Cargo.lock from gitignore if creating an executable, leave it for libraries
 # More information here https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html
