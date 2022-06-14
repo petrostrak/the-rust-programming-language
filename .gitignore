@@ -32,6 +32,7 @@
 /the-book/message_passing/target
 /the-book/shared_state/target
 /the-book/trait_objects/target
+/the-book/state_design_pattern/target
 
 # Remove Cargo.lock from gitignore if creating an executable, leave it for libraries
 # More information here https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html
