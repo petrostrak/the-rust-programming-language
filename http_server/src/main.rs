@@ -1,10 +1,6 @@
+use http::Method;
 use std::io::stdin;
 use std::net::{IpAddr, Ipv4Addr};
-
-fn main() {
-    let server = Server::new(parse_port());
-    server.run();
-}
 
 struct Server {
     addr: IpAddr,
@@ -20,6 +16,17 @@ impl Server {
     fn run(&self) {
         println!("Listening on {:?}.{}", self.addr, self.port)
     }
+}
+
+struct Request {
+    path: String,
+    query: String,
+    method: Method,
+}
+
+fn main() {
+    let server = Server::new(parse_port());
+    server.run();
 }
 
 fn parse_port() -> u32 {
