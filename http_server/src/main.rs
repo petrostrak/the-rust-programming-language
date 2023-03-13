@@ -5,6 +5,7 @@ use utils::parse_port;
 
 mod query_string;
 mod request;
+mod response;
 mod server;
 mod utils;
 
