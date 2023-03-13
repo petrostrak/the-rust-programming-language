@@ -2,6 +2,7 @@ use http::Method;
 use std::convert::TryFrom;
 use std::error::Error;
 use std::fmt::Display;
+use std::str::{from_utf8, Utf8Error};
 
 pub struct Request {
     pub path: String,
@@ -14,6 +15,7 @@ impl TryFrom<&[u8]> for Request {
 
     // GET /search?name=pit&sort=1 HTTP/1.1
     fn try_from(value: &[u8]) -> Result<Self, Self::Error> {
+        let req: &str = from_utf8(value)?;
         unimplemented!()
     }
 }
@@ -40,6 +42,12 @@ impl RequestError {
 impl Display for RequestError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.message())
+    }
+}
+
+impl From<Utf8Error> for RequestError {
+    fn from(value: Utf8Error) -> Self {
+        Self::InvalidEncoding
     }
 }
 
