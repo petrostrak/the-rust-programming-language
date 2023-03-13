@@ -23,6 +23,9 @@ impl TryFrom<&[u8]> for Request {
         if protocol != "HTTP/1.1" {
             return Err(RequestError::InvalidProtocol);
         }
+
+        let method = method.parse::<Method>().unwrap();
+
         unimplemented!()
     }
 }
