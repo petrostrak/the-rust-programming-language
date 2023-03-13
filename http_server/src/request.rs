@@ -17,7 +17,7 @@ impl TryFrom<&[u8]> for Request {
     fn try_from(value: &[u8]) -> Result<Self, Self::Error> {
         let req: &str = from_utf8(value)?;
         let (method, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
-        let (path, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
+        let (mut path, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
         let (protocol, _) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
 
         if protocol != "HTTP/1.1" {
@@ -25,6 +25,12 @@ impl TryFrom<&[u8]> for Request {
         }
 
         let method = method.parse::<Method>().unwrap();
+
+        let mut query_string = None;
+        if let Some(i) = path.find('?') {
+            query_string = Some(&path[i + 1..]);
+            path = &path[..i];
+        }
 
         unimplemented!()
     }
