@@ -4,9 +4,11 @@ use std::error::Error;
 use std::fmt::Display;
 use std::str::{from_utf8, Utf8Error};
 
+use crate::query_string::QueryString;
+
 pub struct Request<'buf> {
     pub path: &'buf str,
-    pub query: Option<&'buf str>,
+    pub query: Option<QueryString<'buf>>,
     pub method: Method,
 }
 
@@ -28,7 +30,7 @@ impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
 
         let mut query_string = None;
         if let Some(i) = path.find('?') {
-            query_string = Some(&path[i + 1..]);
+            query_string = Some(QueryString::from(&path[i + 1..]));
             path = &path[..i];
         }
 
