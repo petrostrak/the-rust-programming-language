@@ -3,6 +3,7 @@
 use server::Server;
 use utils::parse_port;
 
+mod query_string;
 mod request;
 mod server;
 mod utils;
