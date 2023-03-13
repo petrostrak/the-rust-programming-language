@@ -4,17 +4,17 @@ use std::error::Error;
 use std::fmt::Display;
 use std::str::{from_utf8, Utf8Error};
 
-pub struct Request {
-    pub path: String,
-    pub query: Option<String>,
+pub struct Request<'buf> {
+    pub path: &'buf str,
+    pub query: Option<&'buf str>,
     pub method: Method,
 }
 
-impl TryFrom<&[u8]> for Request {
+impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
     type Error = RequestError;
 
     // GET /search?name=pit&sort=1 HTTP/1.1
-    fn try_from(value: &[u8]) -> Result<Self, Self::Error> {
+    fn try_from(value: &'buf [u8]) -> Result<Self, Self::Error> {
         let req: &str = from_utf8(value)?;
         let (method, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
         let (mut path, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
@@ -32,7 +32,11 @@ impl TryFrom<&[u8]> for Request {
             path = &path[..i];
         }
 
-        unimplemented!()
+        Ok(Request {
+            path,
+            query: query_string,
+            method,
+        })
     }
 }
 
