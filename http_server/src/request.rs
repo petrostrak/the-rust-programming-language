@@ -16,6 +16,13 @@ impl TryFrom<&[u8]> for Request {
     // GET /search?name=pit&sort=1 HTTP/1.1
     fn try_from(value: &[u8]) -> Result<Self, Self::Error> {
         let req: &str = from_utf8(value)?;
+        let (method, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
+        let (path, req) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
+        let (protocol, _) = get_next_word(req).ok_or(RequestError::InvalidRequest)?;
+
+        if protocol != "HTTP/1.1" {
+            return Err(RequestError::InvalidProtocol);
+        }
         unimplemented!()
     }
 }
@@ -52,3 +59,12 @@ impl From<Utf8Error> for RequestError {
 }
 
 impl Error for RequestError {}
+
+fn get_next_word(req: &str) -> Option<(&str, &str)> {
+    for (i, c) in req.chars().enumerate() {
+        if c == ' ' || c == '\n' {
+            return Some((&req[..i], &req[i + 1..]));
+        }
+    }
+    None
+}
