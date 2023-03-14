@@ -1,6 +1,9 @@
+use http::StatusCode;
+
 use crate::request::Request;
+use crate::response::Response;
 use std::convert::TryFrom;
-use std::{io::Read, net::TcpListener};
+use std::{io::Read, io::Write, net::TcpListener};
 
 pub struct Server {
     pub addr: String,
@@ -24,14 +27,24 @@ impl Server {
                     match stream.read(&mut buf) {
                         Ok(_) => {
                             println!("Received a request: {}", String::from_utf8_lossy(&buf));
-                            match Request::try_from(&buf[..]) {
-                                Ok(req) => {
-                                    dbg!(req);
+                            let response = match Request::try_from(&buf[..]) {
+                                Ok(req) => Response::new(
+                                    StatusCode::OK,
+                                    Some("<h1>It works!</h1>".to_string()),
+                                ),
+                                Err(e) => {
+                                    println!("Failed to parse the request: {}", e);
+                                    Response::new(StatusCode::BAD_REQUEST, None)
                                 }
-                                Err(e) => println!("Failed to parse the request: {}", e),
+                            };
+                            if let Err(e) = response.send(&mut stream) {
+                                println!("Failed to send response: {}", e);
                             }
                         }
-                        Err(e) => println!("Failed to read from connection {}.", e),
+                        Err(e) => {
+                            println!("Failed to read from connection {}.", e);
+                            Response::new(StatusCode::BAD_REQUEST, None).send(&mut stream);
+                        }
                     }
                 }
                 Err(e) => {
