@@ -1,3 +1,6 @@
+const ONE_DOLLAR_COUPON: f64 = 1.0;
+const TEN_PERCENT_OFF_PROMO: f64 = 0.9;
+
 trait Sale {
     fn amount(&self) -> f64;
 }
@@ -12,14 +15,14 @@ impl Sale for FullSale {
 struct OneDollarOffCoupon(f64);
 impl Sale for OneDollarOffCoupon {
     fn amount(&self) -> f64 {
-        self.0 - 1.0
+        self.0 - ONE_DOLLAR_COUPON
     }
 }
 
 struct TenPercentOffPromo(f64);
 impl Sale for TenPercentOffPromo {
     fn amount(&self) -> f64 {
-        self.0 * 0.9
+        self.0 * TEN_PERCENT_OFF_PROMO
     }
 }
 
