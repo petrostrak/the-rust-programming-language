@@ -7,6 +7,7 @@ enum Status {
 fn main() {
     let status = Status::Error(5);
     match status {
+        // @ is called binding
         Status::Error(s @ 3) => println!("error #3"),
         Status::Error(s @ 5..=6) => println!("error #5 or #6"),
         Status::Error(s @ 4..=10) => println!("error #4 through #10"),
