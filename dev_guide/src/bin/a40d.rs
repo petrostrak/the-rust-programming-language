@@ -1,9 +1,6 @@
 // Smart pointers & interior mutability
 
-use std::{
-    cell::{Ref, RefCell},
-    rc::Rc,
-};
+use std::{cell::RefCell, rc::Rc};
 
 #[derive(Debug)]
 enum MenuItem {
